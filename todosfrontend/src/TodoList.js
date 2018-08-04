@@ -7,7 +7,7 @@ class TodoList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-       todos: []
+      todos: []
     }
     this.addTodo = this.addTodo.bind(this)
   }
@@ -16,31 +16,31 @@ class TodoList extends Component {
     this.loadTodos();
   }
 
-  async loadTodos(){
+  async loadTodos() {
     let todos = await apiCalls.getTodos()
-    this.setState({todos});
+    this.setState({ todos });
   }
 
   async addTodo(val) {
     let newTodo = await apiCalls.createTodo(val)
-    this.setState({todos: [...this.state.todos, newTodo]})
+    this.setState({ todos: [...this.state.todos, newTodo] })
   }
 
   async deleteTodo(id) {
     await apiCalls.removeTodo(id)
     const todos = this.state.todos.filter(todo => todo._id !== id)
-    this.setState({todos: todos})
+    this.setState({ todos: todos })
 
   }
 
   async toggleTodo(todo) {
     let updatedTodo = await apiCalls.updateTodo(todo)
-      const todos = this.state.todos.map(t =>
-        (t._id === updatedTodo._id)
-        ? {...t, completed: !t.completed}
+    const todos = this.state.todos.map(t =>
+      (t._id === updatedTodo._id)
+        ? { ...t, completed: !t.completed }
         : t
-      )
-      this.setState({todos: todos})
+    )
+    this.setState({ todos: todos })
   }
 
   render() {
@@ -57,7 +57,7 @@ class TodoList extends Component {
         <h1>Todo List!</h1>
         <TodoForm addTodo={this.addTodo} />
         <ul>
-        {todos}
+          {todos}
         </ul>
       </div>
     )

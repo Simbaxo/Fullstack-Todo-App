@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TodoItem = ({name, completed, onDelete, onToggle}) => (
+const TodoItem = ({ name, completed, onDelete, onToggle }) => (
   <li>
     <span
       style={{
@@ -10,7 +10,7 @@ const TodoItem = ({name, completed, onDelete, onToggle}) => (
     >
       {name}
     </span>
-      <span onClick={onDelete}> X </span>
+    <span onClick={onDelete}> X </span>
   </li>
 )
 
